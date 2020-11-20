@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="vue.js"></script>
+<style>
+    #wb {
+        color: #b44c4c59;
+        background: #3edfd159
+    }
+    
+    #wb a {
+        display: inline-block;
+        width: 50%;
+        text-align: center
+    }
+    
+    #rn img {
+        width: 100%;
+    }
+    
+    .fff {
+        color: #000000;
+        background: #ffff;
+    }
+    
+    .ddd span {
+        display: inline-block;
+        width: 25%;
+        border: solid 1px #000000;
+        margin: auto -3px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <!-- <div id="wb">
+            <a v-for="(n,i) of sz" @click='f1(i)' :class="{'fff':id1==i}">{{n.wb}} </a>
+        </div>
+        <div id="rn">
+            <div v-for="(n,i) of sz" v-show="id1==i">
+                <img :src=n.rn>
+            </div>
+        </div> -->
+        <div>
+            <div class="ddd">
+                <span>bt</span>
+                <span>名</span>
+                <span>时间</span>
+                <span>操作</span>
+                <div v-for='(n,i) of bd1'>
+                    <span>
+                          {{n.title}}  
+                        </span>
+                    <span>
+                            {{n.name}}
+                        </span>
+                    <span>
+                            {{n.date}}
+                        </span>
+                    <span>
+                        <button @click='gx(i)'>更新</button>
+                        <button @click='sc(i)'>删除</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="gx">
+            <div class="gx">
+                <input v-model='bd2.title'>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            bd2: [{
+
+            }],
+            bd1: [{
+                title: 'ddd',
+                name: 'ddd',
+                date: '2010/1/1'
+            }, {
+                title: 'ccc',
+                name: 'ccc',
+                date: '2010/2/2'
+            }],
+            sz: [{
+                wb: 'aa',
+                rn: '1.jpg'
+            }, {
+                wb: 'bb',
+                rn: '2.jpg'
+            }],
+            id1: 0
+        },
+        methods: {
+            f1(i) {
+                this.id1 = i;
+            },
+            gx(i) {
+                this.bd2 = {
+                    title: this.bd1[i].title,
+                    name: this.bd1[i].name,
+                    date: this.bd1[i].date,
+                }
+            },
+            sc(i) {
+                if (confirm("是否删除"))
+                    this.bd1.splice(i, 1)
+            }
+        },
+    })
+</script>
